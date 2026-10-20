@@ -304,7 +304,9 @@ form.qf{background:#fff;border-radius:20px;padding:32px}
 .site-foot a{color:#DCE3E9;text-decoration:none}
 .site-foot a:hover{color:var(--blue)}
 .site-foot ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
-.copy{padding-top:24px;font-size:.84rem}
+.copy{padding-top:24px;font-size:.84rem;display:flex;justify-content:space-between;align-items:center;gap:8px 24px;flex-wrap:wrap}
+.credit{color:#7D8994;letter-spacing:.02em}
+@media (max-width:640px){.copy{flex-direction:column;justify-content:center;text-align:center}}
 
 /* Fixed call bar */
 .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--black);border-top:3px solid var(--blue);padding:12px 0 calc(12px + env(safe-area-inset-bottom))}
@@ -645,7 +647,7 @@ form.qf{background:#fff;border-radius:20px;padding:32px}
         </div>
       </div>
     </div>
-    <div class="copy">© <span id="yr">2026</span> Utah Power Seal · Utah County &amp; Salt Lake County</div>
+    <div class="copy"><span>© <span id="yr">2026</span> Utah Power Seal · Utah County &amp; Salt Lake County</span><span class="credit">Powered by Brilix Marketing</span></div>
   </div>
 </footer>
 
