@@ -14,8 +14,8 @@
 <meta property="og:image" content="https://utahpowerseal.com/og-image.jpg">
 <meta property="og:url" content="https://utahpowerseal.com/">
 <link rel="canonical" href="https://utahpowerseal.com/">
-<link rel="preload" as="image" href="img/hero-wide-1179.webp" imagesrcset="img/hero-wide-800.webp 800w, img/hero-wide-1179.webp 1179w" imagesizes="100vw" media="(min-width:701px)" fetchpriority="high">
-<link rel="preload" as="image" href="img/hero-tall-640.webp" imagesrcset="img/hero-tall-640.webp 640w, img/hero-tall-860.webp 860w, img/hero-tall-1179.webp 1179w" imagesizes="100vw" media="(max-width:700px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero2-wide-1600.webp" imagesrcset="img/hero2-wide-960.webp 960w, img/hero2-wide-1600.webp 1600w" imagesizes="100vw" media="(min-width:701px)" fetchpriority="high">
+<link rel="preload" as="image" href="img/hero2-tall-700.webp" imagesrcset="img/hero2-tall-700.webp 700w, img/hero2-tall-1100.webp 1100w" imagesizes="100vw" media="(max-width:700px)" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -102,8 +102,8 @@ nav.main a:hover{background:var(--paper)}
 /* Hero */
 .hero{position:relative;min-height:calc(100vh - 78px - var(--bar));min-height:calc(100svh - 78px - var(--bar));display:flex;align-items:flex-end;color:#fff;background:#1A232C;overflow:hidden}
 .cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero .cover{object-position:center 60%}
-@media (max-width:700px){.hero .cover{object-position:center 70%}}
+.hero .cover{object-position:center 55%}
+@media (max-width:700px){.hero .cover{object-position:center 40%}}
 .hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(16,24,32,.35) 0%,rgba(16,24,32,.55) 45%,rgba(16,24,32,.94) 100%)}
 .hero .wrap{position:relative;z-index:2;width:100%;padding-top:64px;padding-bottom:56px}
 .badge{display:inline-flex;align-items:center;gap:10px;font-family:var(--head);font-weight:600;font-size:.9rem;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:8px 16px;border-radius:999px;margin-bottom:26px;backdrop-filter:blur(6px)}
@@ -121,14 +121,19 @@ nav.main a:hover{background:var(--paper)}
 /* Intro */
 .intro{padding:110px 0}
 .intro .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.compare{position:relative;margin:0;border-radius:24px;overflow:hidden}
-.compare img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover}
-.compare .tag{position:absolute;bottom:16px;font-family:var(--head);font-weight:700;font-size:.85rem;padding:7px 14px;border-radius:999px}
-.compare .t1{left:16px;background:var(--blue);color:var(--black)}
-.compare .t2{right:16px;background:rgba(255,255,255,.92);color:var(--black)}
+.ba{position:relative;margin:0;border-radius:24px;overflow:hidden;--pos:50%;aspect-ratio:1/1;background:#ddd;user-select:none;touch-action:pan-y}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba-before{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
+.ba-line{position:absolute;top:0;bottom:0;left:var(--pos);width:3px;margin-left:-1.5px;background:#fff;pointer-events:none;box-shadow:0 0 8px rgba(0,0,0,.35)}
+.ba-line span{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;background:#fff;color:var(--black);display:grid;place-items:center;font-size:1.3rem;font-weight:700;letter-spacing:-2px;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+.ba-range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;z-index:3}
+.ba-range:focus-visible ~ .ba-line span{outline:3px solid var(--blue)}
+.ba .tag{position:absolute;bottom:16px;z-index:2;font-family:var(--head);font-weight:700;font-size:.85rem;padding:7px 14px;border-radius:999px;pointer-events:none}
+.ba .t1{left:16px;background:var(--black);color:#fff}
+.ba .t2{right:16px;background:var(--blue);color:var(--black)}
 .intro h2{margin-bottom:.5em}
 .intro p{font-size:1.15rem;color:#4D5964}
-@media (max-width:900px){.intro{padding:76px 0}.intro .wrap{grid-template-columns:1fr;gap:32px}.compare{max-width:560px;width:100%;justify-self:center}.compare img{aspect-ratio:4/3}}
+@media (max-width:900px){.intro{padding:76px 0}.intro .wrap{grid-template-columns:1fr;gap:32px}.ba{max-width:560px;width:100%;justify-self:center}}
 
 /* Image band */
 .band{position:relative;min-height:440px;display:flex;align-items:center;background:#55606A;color:#fff;text-align:center;overflow:hidden}
@@ -153,6 +158,30 @@ nav.main a:hover{background:var(--paper)}
 .reel li strong{color:var(--black);font-weight:700}
 @media (max-width:860px){.reel{padding:76px 0}.reel .wrap{column-gap:36px}.reel-video{max-width:280px}}
 @media (max-width:640px){.reel .wrap{grid-template-columns:1fr;grid-template-areas:"head" "video" "list";row-gap:28px}.reel-video{max-width:300px}.reel-list .btn{display:none}.reel ul{margin-bottom:0}}
+
+/* Gallery */
+.work{padding:0 0 110px}
+.work-head{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap;margin-bottom:40px}
+.work-head h2{margin:0}
+.work-head .lead{margin:0;max-width:40ch}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:240px;gap:16px;list-style:none;margin:0;padding:0}
+.gallery li{position:relative;border-radius:20px;overflow:hidden;background:#e5e7e9}
+@media (min-width:901px){
+  .gallery li:nth-child(1){grid-column:1;grid-row:1 / span 2}
+  .gallery li:nth-child(2){grid-column:1;grid-row:3}
+  .gallery li:nth-child(3){grid-column:2;grid-row:2 / span 2}
+  .gallery li:nth-child(4){grid-column:2;grid-row:1}
+  .gallery li:nth-child(5){grid-column:3;grid-row:1 / span 2}
+  .gallery li:nth-child(6){grid-column:3;grid-row:3}
+}
+.gallery img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.gallery li:hover img{transform:scale(1.03)}
+.gallery figcaption{position:absolute;z-index:2;left:14px;bottom:13px;right:14px;font-family:var(--head);font-weight:700;font-size:.88rem;line-height:1.25;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.5)}
+.gallery li::after{content:"";position:absolute;z-index:1;inset:auto 0 0 0;height:50%;background:linear-gradient(transparent,rgba(16,24,32,.75));pointer-events:none}
+.gallery figure{margin:0;height:100%}
+@media (max-width:900px){.gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:260px}.work{padding-bottom:76px}}
+@media (max-width:520px){.gallery{grid-auto-rows:200px;gap:10px}.gallery figcaption{font-size:.75rem;left:10px;bottom:9px}}
+@media (max-width:640px){.work-head{flex-direction:column;align-items:center;text-align:center;gap:14px}.work-head .lead{margin:0 auto}}
 
 /* Process */
 .process{padding:110px 0;background:var(--paper)}
@@ -315,7 +344,7 @@ form.qf{background:#fff;border-radius:20px;padding:32px}
     <a class="brand" href="#" aria-label="Utah Power Seal home"><img src="logo-260.webp" srcset="logo-260.webp 2x, logo.webp 3x" alt="Utah Power Seal" width="130" height="60"></a>
     <nav class="main" id="nav" aria-label="Main">
       <ul>
-        <li><a href="#process">Process</a></li>
+        <li><a href="#work">Our Work</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#areas">Areas</a></li>
@@ -333,8 +362,8 @@ form.qf{background:#fff;border-radius:20px;padding:32px}
 <main id="main">
   <section class="hero">
     <picture>
-      <source media="(max-width:700px)" srcset="img/hero-tall-640.webp 640w, img/hero-tall-860.webp 860w, img/hero-tall-1179.webp 1179w" sizes="100vw">
-      <img class="cover" src="img/hero-wide-1179.webp" srcset="img/hero-wide-800.webp 800w, img/hero-wide-1179.webp 1179w" sizes="100vw" alt="" width="1179" height="900" fetchpriority="high" decoding="async">
+      <source media="(max-width:700px)" srcset="img/hero2-tall-700.webp 700w, img/hero2-tall-1100.webp 1100w" sizes="100vw">
+      <img class="cover" src="img/hero2-wide-1600.webp" srcset="img/hero2-wide-960.webp 960w, img/hero2-wide-1600.webp 1600w" sizes="100vw" alt="" width="1600" height="1067" fetchpriority="high" decoding="async">
     </picture>
     <div class="wrap">
       <div class="badge"><i></i>Free quotes · Evening &amp; weekend bids</div>
@@ -353,12 +382,15 @@ form.qf{background:#fff;border-radius:20px;padding:32px}
         <span class="kicker">Utah Power Seal</span>
         <h2>Clean it. Seal it. Stop worrying about it.</h2>
         <p>Your driveway takes a beating every winter. We power wash off the buildup, then seal the surface so water, ice melt and oil sit on top instead of soaking in.</p>
-        <p>The photo shows the difference. Same stamped concrete, same porch. One side is sealed, one isn't yet.</p>
+        <p>Drag the slider to see the difference. Same pillar cap, before and after one cleaning.</p>
         <a class="arrow" href="#services">See what we do →</a>
       </div>
-      <figure class="compare">
-        <img src="img/sealed-1200.webp" srcset="img/sealed-600.webp 600w, img/sealed-900.webp 900w, img/sealed-1200.webp 1200w" sizes="(max-width:640px) calc(100vw - 48px), (max-width:900px) 560px, 544px" alt="Stamped concrete porch with the left side freshly sealed and dark, and the right side unsealed and gray" width="1200" height="1200" loading="lazy" decoding="async">
-        <span class="tag t1">Sealed</span><span class="tag t2">Not yet</span>
+      <figure class="ba" aria-label="Before and after cleaning a concrete pillar cap">
+        <img class="ba-after" src="img/pillar-after-1000.webp" srcset="img/pillar-after-600.webp 600w, img/pillar-after-1000.webp 1000w" sizes="(max-width:640px) calc(100vw - 48px), (max-width:900px) 560px, 544px" alt="Pillar cap after cleaning: clean, even gray concrete" width="1000" height="1000" loading="lazy" decoding="async">
+        <div class="ba-before"><img src="img/pillar-before-1000.webp" srcset="img/pillar-before-600.webp 600w, img/pillar-before-1000.webp 1000w" sizes="(max-width:640px) calc(100vw - 48px), (max-width:900px) 560px, 544px" alt="Pillar cap before cleaning: covered in black mold and lichen" width="1000" height="1000" loading="lazy" decoding="async"></div>
+        <div class="ba-line" aria-hidden="true"><span>&#8249;&#8250;</span></div>
+        <span class="tag t1">Before</span><span class="tag t2">After</span>
+        <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after">
       </figure>
     </div>
   </section>
@@ -393,6 +425,26 @@ form.qf{background:#fff;border-radius:20px;padding:32px}
         </ul>
         <a class="btn btn-blue" href="tel:+13854489466">Call 385-448-9466</a>
       </div>
+    </div>
+  </section>
+
+  <section class="work" id="work">
+    <div class="wrap">
+      <div class="work-head">
+        <div>
+          <span class="kicker">Recent work</span>
+          <h2>Real Utah homes</h2>
+        </div>
+        <p class="lead">Driveways, patios, walkways and pool decks from around the valley.</p>
+      </div>
+      <ul class="gallery">
+          <li class="tall"><figure><img src="img/work-patio-800.webp" srcset="img/work-patio-480.webp 480w, img/work-patio-800.webp 800w" sizes="(max-width:520px) 48vw, (max-width:900px) 46vw, 380px" alt="Stamped concrete patio with flower bed and mountain view, freshly sealed" width="800" height="1067" loading="lazy" decoding="async"><figcaption>Stamped patio, cleaned &amp; sealed</figcaption></figure></li>
+          <li><figure><img src="img/work-walkway-800.webp" srcset="img/work-walkway-480.webp 480w, img/work-walkway-800.webp 800w" sizes="(max-width:520px) 48vw, (max-width:900px) 46vw, 380px" alt="Sealed stamped concrete walkway leading to outdoor kitchen" width="800" height="600" loading="lazy" decoding="async"><figcaption>Stamped walkway &amp; steps</figcaption></figure></li>
+          <li class="tall"><figure><img src="img/work-driveway-800.webp" srcset="img/work-driveway-480.webp 480w, img/work-driveway-800.webp 800w" sizes="(max-width:520px) 48vw, (max-width:900px) 46vw, 380px" alt="Freshly sealed driveway taped off while it cures" width="800" height="1067" loading="lazy" decoding="async"><figcaption>Driveway sealing</figcaption></figure></li>
+          <li><figure><img src="img/sealed-900.webp" srcset="img/sealed-600.webp 600w, img/sealed-900.webp 900w" sizes="(max-width:520px) 48vw, (max-width:900px) 46vw, 380px" alt="Stamped porch with the left side sealed and the right side not yet" width="900" height="900" loading="lazy" decoding="async"><figcaption>Sealed vs. not yet</figcaption></figure></li>
+          <li class="tall"><figure><img src="img/work-pavers-800.webp" srcset="img/work-pavers-480.webp 480w, img/work-pavers-800.webp 800w" sizes="(max-width:520px) 48vw, (max-width:900px) 46vw, 380px" alt="Paver patio wrapping a covered back porch" width="800" height="1067" loading="lazy" decoding="async"><figcaption>Paver patio</figcaption></figure></li>
+          <li><figure><img src="img/work-pool-800.webp" srcset="img/work-pool-480.webp 480w, img/work-pool-800.webp 800w" sizes="(max-width:520px) 48vw, (max-width:900px) 46vw, 380px" alt="Paver pool deck at sunset" width="800" height="1067" loading="lazy" decoding="async"><figcaption>Pool deck pavers</figcaption></figure></li>
+      </ul>
     </div>
   </section>
 
@@ -626,6 +678,13 @@ form.qf{background:#fff;border-radius:20px;padding:32px}
       new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) tryPlay(); }); }, {threshold:.2}).observe(vid);
     } else { tryPlay(); }
   }
+
+  // Before/after slider
+  document.querySelectorAll('.ba').forEach(function(ba){
+    var r = ba.querySelector('.ba-range');
+    var set = function(){ ba.style.setProperty('--pos', r.value + '%'); };
+    r.addEventListener('input', set); set();
+  });
 
   // Quote form via FormSubmit (emails info@utahpowerseal.com)
   var form = document.querySelector('form.qf'), msg = form.querySelector('.form-msg');
