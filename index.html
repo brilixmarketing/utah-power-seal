@@ -14,7 +14,7 @@
 <meta property="og:image" content="og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;0,800;0,900;1,900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -34,114 +34,177 @@
 <style>
 :root{
   --blue:#00A3E0; --blue-dark:#0077B6;
-  --black:#101820; --ink:#22303C; --gray:#888B8D; --line:#DDE1E4;
-  --paper:#FAFAF8; --stone:#EFEEEA;
+  --black:#101820; --ink:#22303C; --gray:#888B8D; --line:#DCE1E5;
+  --paper:#F4F6F7; --white:#FFFFFF;
   --head:"Montserrat",system-ui,sans-serif; --body:"Roboto",system-ui,sans-serif;
-  --bar:76px;
+  --radius:10px; --max:1140px; --bar:80px;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:70px}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{margin:0;font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.65;font-size:17px;padding-bottom:calc(var(--bar) + env(safe-area-inset-bottom))}
+body{margin:0;font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.6;font-size:17px;padding-bottom:calc(var(--bar) + env(safe-area-inset-bottom))}
 img{max-width:100%;display:block}
 a{color:var(--blue-dark)}
-h1,h2,h3{font-family:var(--head);color:var(--black);line-height:1.15;margin:0 0 .5em;font-weight:800}
-h2{font-size:clamp(1.6rem,3.4vw,2.1rem)}
-h3{font-size:1.1rem;font-weight:700}
+h1,h2,h3{font-family:var(--head);color:var(--black);line-height:1.1;margin:0 0 .5em}
+h2{font-size:clamp(1.7rem,3.8vw,2.4rem);font-weight:900;text-transform:uppercase}
+h3{font-size:1.05rem;font-weight:800;text-transform:uppercase;letter-spacing:.03em}
 p{margin:0 0 1em}
-.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
-.narrow{max-width:680px}
-.skip{position:absolute;left:-999px;top:8px;background:var(--black);color:#fff;padding:8px 14px;z-index:100}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+.lead{font-size:1.08rem;color:#4A5662;max-width:58ch}
+.skip{position:absolute;left:-999px;top:8px;background:var(--black);color:#fff;padding:8px 14px;z-index:100;border-radius:6px}
 .skip:focus{left:8px}
 :focus-visible{outline:3px solid var(--blue);outline-offset:3px}
 
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;font-family:var(--body);font-weight:700;font-size:1rem;text-decoration:none;border-radius:6px;padding:14px 22px;border:0;cursor:pointer}
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55em;font-family:var(--head);font-weight:800;text-transform:uppercase;letter-spacing:.05em;font-size:.9rem;text-decoration:none;border-radius:8px;padding:15px 24px;border:2px solid transparent;cursor:pointer;white-space:nowrap}
 .btn svg{width:18px;height:18px;flex:none}
 .btn-blue{background:var(--blue);color:var(--black)}
 .btn-blue:hover{background:#26B4EA}
+.btn-outline{border-color:rgba(255,255,255,.45);color:#fff}
+.btn-outline:hover{border-color:#fff}
+.btn-dark{background:var(--black);color:#fff}
+.btn-dark:hover{background:#26323D}
 
 /* Header */
-header.top{background:#fff;border-bottom:1px solid var(--line)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:76px}
+header.top{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;gap:16px}
 .brand img{height:54px;width:auto}
-.top-right{display:flex;align-items:center;gap:22px}
-.top-right nav a{color:var(--ink);text-decoration:none;font-size:.95rem;margin-left:18px}
-.top-right nav a:hover{color:var(--blue-dark)}
-.top-phone{font-weight:700;color:var(--black);text-decoration:none;white-space:nowrap}
-.top-phone small{display:block;font-weight:400;font-size:.75rem;color:var(--gray);line-height:1}
-@media (max-width:820px){.top-right nav{display:none}.brand img{height:44px}}
+nav.main ul{display:flex;gap:2px;list-style:none;margin:0;padding:0}
+nav.main a{font-family:var(--head);font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.07em;color:var(--black);text-decoration:none;padding:10px 12px;border-bottom:2px solid transparent}
+nav.main a:hover{border-bottom-color:var(--blue)}
+.top-cta{display:flex;align-items:center;gap:18px}
+.top-phone{font-family:var(--head);font-weight:800;color:var(--black);text-decoration:none;white-space:nowrap}
+.top .btn{padding:11px 16px;font-size:.78rem}
+.menu-btn{display:none;background:none;border:0;padding:10px;cursor:pointer}
+.menu-btn span{display:block;width:24px;height:3px;background:var(--black);margin:4px 0;border-radius:2px}
+@media (max-width:980px){
+  .menu-btn{display:block}
+  .top-cta{display:none}
+  nav.main{position:absolute;left:0;right:0;top:74px;background:#fff;border-bottom:1px solid var(--line);display:none}
+  nav.main.open{display:block}
+  nav.main ul{flex-direction:column;padding:8px 16px 16px}
+  nav.main a{display:block;padding:13px 4px;font-size:.92rem}
+  .brand img{height:46px}
+}
 
 /* Hero */
-.hero{background:var(--black);color:#D5DCE2}
-.hero .wrap{padding-top:64px;padding-bottom:64px}
-.hero h1{color:#fff;font-size:clamp(2rem,5vw,3.1rem);max-width:17ch}
-.hero p{font-size:1.15rem;max-width:54ch}
-.hero .actions{display:flex;flex-wrap:wrap;align-items:center;gap:18px;margin-top:26px}
-.hero .actions a.text{color:#fff}
-.hero .note{margin-top:22px;font-size:.92rem;color:#97A3AE}
+.hero{position:relative;background:var(--black);color:#fff;overflow:hidden}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:center;padding-top:80px;padding-bottom:140px}
+.hero h1{color:#fff;font-size:clamp(2.3rem,5.8vw,4rem);font-weight:900;text-transform:uppercase}
+.hero h1 em{font-style:italic;color:var(--blue)}
+.hero p{color:#C3CCD4;font-size:1.13rem;max-width:52ch}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.facts{border-top:3px solid var(--blue);background:#1A2530;padding:8px 26px}
+.facts div{padding:18px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.facts div:last-child{border-bottom:0}
+.facts b{display:block;font-family:var(--head);font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:.95rem}
+.facts span{color:#9FABB6;font-size:.93rem}
+.mountains{position:absolute;left:0;right:0;bottom:-1px;z-index:1;width:100%;height:auto}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:36px;padding-top:56px;padding-bottom:110px}}
 
-/* Plain sections */
-section{padding:64px 0;border-bottom:1px solid var(--line)}
-section.alt{background:var(--stone)}
+/* Sections */
+section{padding:84px 0}
+.section-head{margin-bottom:36px}
+.section-head .lead{margin:0}
 
-.work{display:grid;grid-template-columns:1fr 1fr;gap:10px 48px;margin-top:8px}
-.work div{padding:18px 0;border-top:2px solid var(--black)}
-.work h3{margin-bottom:.3em}
-.work p{margin:0;color:#4A5662}
-@media (max-width:700px){.work{grid-template-columns:1fr}}
+/* Services */
+.services{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.svc{background:#fff;border-radius:var(--radius);padding:26px 22px;border:1px solid var(--line);border-top:4px solid var(--blue)}
+.svc p{margin:0;color:#4C5865;font-size:.97rem}
+@media (max-width:1000px){.services{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.services{grid-template-columns:1fr}}
 
-.why{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:start}
-.why aside{background:#fff;border-left:4px solid var(--blue);padding:22px 24px}
-.why aside p:last-child{margin:0}
-@media (max-width:800px){.why{grid-template-columns:1fr;gap:24px}}
+/* Why */
+.why{background:#fff}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.threats{margin:0;padding:0;list-style:none;border-top:2px solid var(--black)}
+.threats li{padding:18px 0;border-bottom:1px solid var(--line)}
+.threats strong{font-family:var(--head);text-transform:uppercase;letter-spacing:.04em;font-size:.95rem;color:var(--black);display:block;margin-bottom:2px}
+.threats span{color:#55616D;font-size:.96rem}
+.callout{margin-top:26px;background:var(--black);color:#fff;border-radius:var(--radius);padding:22px 24px;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.callout p{margin:0;font-family:var(--head);font-weight:700}
+@media (max-width:900px){.why-grid{grid-template-columns:1fr;gap:32px}}
 
-ol.how{padding-left:1.3em;margin:0}
-ol.how li{margin-bottom:.8em;padding-left:.3em}
-ol.how li::marker{font-family:var(--head);font-weight:800;color:var(--blue-dark)}
+/* Process */
+.process{background:var(--black);color:#fff}
+.process h2{color:#fff}
+.process .lead{color:#A9B4BE}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s;list-style:none;padding:0;margin:0}
+.steps li{border-top:2px solid rgba(255,255,255,.15);padding:22px 4px 0}
+.steps li::before{counter-increment:s;content:"0" counter(s);font-family:var(--head);font-weight:900;font-size:2.4rem;color:var(--blue);line-height:1;display:block;margin-bottom:12px}
+.steps h3{color:#fff}
+.steps p{margin:0;color:#B4BEC7;font-size:.96rem}
+@media (max-width:1000px){.steps{grid-template-columns:repeat(2,1fr);row-gap:30px}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}}
 
-.areas p{margin-bottom:.6em}
-.areas strong{color:var(--black)}
+/* Areas */
+.areas-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.county{background:#fff;border-radius:var(--radius);padding:26px;border:1px solid var(--line)}
+.cities{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:12px 0 0;padding:0}
+.cities li{font-size:.9rem;background:var(--paper);border:1px solid var(--line);padding:5px 11px;border-radius:6px}
+.areas-note{margin-top:20px;color:#55616D}
+@media (max-width:800px){.areas-grid{grid-template-columns:1fr}}
 
 /* Quote */
-.quote-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:start}
-.contact dl{margin:20px 0 0}
-.contact dt{font-size:.8rem;color:var(--gray);text-transform:uppercase;letter-spacing:.06em;margin-top:14px}
-.contact dd{margin:0;font-weight:500}
-.contact dd a{color:var(--black)}
-form.qf{background:#fff;border:1px solid var(--line);border-radius:8px;padding:26px}
+.quote{background:#fff;border-top:1px solid var(--line)}
+.quote-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:52px;align-items:start}
+.contact-list{list-style:none;padding:0;margin:24px 0 0;border-top:2px solid var(--black)}
+.contact-list li{padding:14px 0;border-bottom:1px solid var(--line)}
+.contact-list small{display:block;color:var(--gray);font-size:.74rem;text-transform:uppercase;letter-spacing:.1em;font-family:var(--head);font-weight:700}
+.contact-list a{color:var(--black);font-weight:500;text-decoration:none;font-size:1.05rem}
+.contact-list .plain{color:var(--black);font-weight:500;font-size:1.05rem}
+.contact-list a:hover{color:var(--blue-dark)}
+form.qf{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:30px}
 .qf .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.qf label{display:block;font-weight:500;font-size:.93rem;color:var(--black);margin-bottom:14px}
-.qf input,.qf select,.qf textarea{display:block;width:100%;margin-top:5px;font:inherit;font-weight:400;font-size:1rem;color:var(--ink);background:#fff;border:1px solid #C9CFD4;border-radius:6px;padding:11px 12px}
-.qf input:focus,.qf select:focus,.qf textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,163,224,.2)}
-.qf textarea{min-height:100px;resize:vertical}
+.qf label{display:block;font-family:var(--head);font-weight:700;font-size:.76rem;letter-spacing:.07em;text-transform:uppercase;color:var(--black);margin-bottom:14px}
+.qf input,.qf select,.qf textarea{display:block;width:100%;margin-top:6px;font:inherit;font-family:var(--body);font-size:1rem;text-transform:none;letter-spacing:0;font-weight:400;color:var(--ink);background:#fff;border:1.5px solid #D2D8DD;border-radius:8px;padding:12px 13px}
+.qf input:focus,.qf select:focus,.qf textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,163,224,.18)}
+.qf textarea{min-height:110px;resize:vertical}
 .qf fieldset{border:0;padding:0;margin:0 0 14px}
-.qf legend{font-weight:500;font-size:.93rem;color:var(--black);margin-bottom:6px;padding:0}
-.checks{display:flex;flex-wrap:wrap;gap:6px 18px}
-.checks label{display:flex;align-items:center;gap:7px;margin:0;font-weight:400}
-.checks input{width:auto;margin:0;accent-color:var(--blue-dark)}
-.qf .btn{width:100%}
+.qf legend{font-family:var(--head);font-weight:700;font-size:.76rem;letter-spacing:.07em;text-transform:uppercase;color:var(--black);margin-bottom:8px;padding:0}
+.checks{display:flex;flex-wrap:wrap;gap:8px}
+.checks label{margin:0;font-family:var(--body);font-weight:500;text-transform:none;letter-spacing:0;font-size:.93rem}
+.checks input{position:absolute;opacity:0;width:1px;height:1px}
+.checks span{display:inline-block;padding:8px 13px;border-radius:6px;border:1.5px solid #D2D8DD;background:#fff;cursor:pointer;user-select:none}
+.checks input:checked+span{background:var(--black);border-color:var(--black);color:#fff}
+.checks input:focus-visible+span{outline:3px solid var(--blue);outline-offset:2px}
+.qf .btn{width:100%;margin-top:4px;font-size:.98rem;padding:16px}
 .hidden{display:none}
-.form-msg{margin:12px 0 0;display:none;padding:12px 14px;border-radius:6px}
-.form-msg.ok{display:block;background:#E8F5EC;color:#1B5E36}
+.form-msg{margin:14px 0 0;font-weight:500;border-radius:8px;padding:13px 15px;display:none}
+.form-msg.ok{display:block;background:#E6F5EC;color:#1B5E36}
 .form-msg.err{display:block;background:#FBEAEA;color:#8E1F1F}
-@media (max-width:820px){.quote-grid{grid-template-columns:1fr;gap:28px}}
-@media (max-width:520px){.qf .row{grid-template-columns:1fr}form.qf{padding:20px}}
+@media (max-width:900px){.quote-grid{grid-template-columns:1fr;gap:32px}}
+@media (max-width:520px){.qf .row{grid-template-columns:1fr}form.qf{padding:22px}}
 
 /* FAQ */
-.faq h3{margin-top:1.6em}
-.faq p{color:#4A5662}
+.faq-list{max-width:800px;border-top:2px solid var(--black)}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;font-family:var(--head);font-weight:800;font-size:1.02rem;color:var(--black);padding:18px 40px 18px 0;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:6px;top:50%;transform:translateY(-50%);font-size:1.5rem;font-weight:600;color:var(--blue-dark)}
+details[open] summary::after{content:"–"}
+details p{margin:0 0 18px;color:#4C5865}
 
 /* Footer */
-.site-foot{background:var(--black);color:#9AA6B1;padding:36px 0;font-size:.92rem}
-.site-foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
-.site-foot a{color:#E3E8EC}
+.site-foot{background:var(--black);color:#9AA6B1;padding:50px 0 36px;font-size:.93rem}
+.site-foot .wrap{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:30px}
+.foot-logo{background:#fff;border-radius:8px;padding:8px 12px;display:inline-block;margin-bottom:12px}
+.foot-logo img{height:50px;width:auto}
+.site-foot h4{font-family:var(--head);color:#fff;text-transform:uppercase;letter-spacing:.1em;font-size:.78rem;margin:0 0 12px}
+.site-foot a{color:#DCE3E9;text-decoration:none}
+.site-foot a:hover{color:var(--blue)}
+.site-foot ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.copy{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.08);padding-top:18px;font-size:.82rem}
+@media (max-width:760px){.site-foot .wrap{grid-template-columns:1fr}}
 
 /* Fixed call bar */
-.callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--black);border-top:3px solid var(--blue);padding:11px 0 calc(11px + env(safe-area-inset-bottom))}
+.callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--black);border-top:3px solid var(--blue);padding:12px 0 calc(12px + env(safe-area-inset-bottom))}
 .callbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
-.callbar p{margin:0;color:#C9D1D8;font-size:.95rem}
-.callbar .btn{font-size:1.08rem;padding:14px 26px}
-@media (max-width:640px){.callbar p{display:none}.callbar .btn{width:100%}}
+.callbar-text{color:#fff;line-height:1.3}
+.callbar-text b{display:block;font-family:var(--head);font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:.95rem}
+.callbar-text span{color:#9AA6B1;font-size:.86rem}
+.callbar .btn{font-size:1.05rem;padding:14px 26px}
+@media (max-width:640px){.callbar-text{display:none}.callbar .btn{width:100%}}
 </style>
 </head>
 <body>
@@ -150,87 +213,130 @@ form.qf{background:#fff;border:1px solid var(--line);border-radius:8px;padding:2
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#" aria-label="Utah Power Seal home"><img src="logo-sm.webp" alt="Utah Power Seal" width="220" height="102"></a>
-    <div class="top-right">
-      <nav aria-label="Main">
-        <a href="#services">Services</a>
-        <a href="#areas">Areas</a>
-        <a href="#quote">Free quote</a>
-      </nav>
-      <a class="top-phone" href="tel:+13854489466"><small>Call for a free quote</small>385-448-9466</a>
+    <nav class="main" id="nav" aria-label="Main">
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why">Why Seal</a></li>
+        <li><a href="#process">How It Works</a></li>
+        <li><a href="#areas">Areas</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <div class="top-cta">
+      <a class="top-phone" href="tel:+13854489466">385-448-9466</a>
+      <a class="btn btn-dark" href="#quote">Free Quote</a>
     </div>
+    <button class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
   </div>
 </header>
 
 <main id="main">
-  <section class="hero">
+  <section class="hero" style="padding:0">
     <div class="wrap">
-      <h1>Driveway sealing and power washing in Utah County.</h1>
-      <p>We clean your concrete, then seal it so it holds up through another Utah winter. Driveways, patios, sidewalks and steps. We also work up into Salt Lake County.</p>
-      <div class="actions">
-        <a class="btn btn-blue" href="tel:+13854489466"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>Call 385-448-9466</a>
-        <a class="text" href="#quote">or send us a quick request</a>
+      <div>
+        <h1>Concrete that <em>stands up</em> to Utah winters</h1>
+        <p>We power wash your driveway, patio and walkways, then seal them so water and ice melt can't soak in. Serving homeowners across Utah County and Salt Lake County.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-blue" href="tel:+13854489466"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>Call 385-448-9466</a>
+          <a class="btn btn-outline" href="#quote">Request a Quote</a>
+        </div>
       </div>
-      <p class="note">Quotes are free. We can come by in the evening or on a Saturday if that's easier.</p>
+      <div class="facts">
+        <div><b>Free quotes</b><span>Every job is priced after we see it.</span></div>
+        <div><b>Evening &amp; weekend bids</b><span>We'll come by when you're home.</span></div>
+        <div><b>Utah &amp; Salt Lake County</b><span>Provo to Salt Lake City and everywhere between.</span></div>
+      </div>
     </div>
+    <svg class="mountains" viewBox="0 0 1440 140" preserveAspectRatio="none" aria-hidden="true">
+      <path fill="#1E2A35" d="M0 120 L120 70 L210 98 L330 30 L420 80 L520 46 L640 92 L760 22 L860 76 L980 40 L1090 88 L1200 34 L1320 82 L1440 56 V140 H0Z"/>
+      <path fill="#F4F6F7" d="M0 128 L160 96 L300 118 L470 84 L600 112 L760 78 L900 114 L1060 90 L1210 116 L1340 96 L1440 108 V140 H0Z"/>
+    </svg>
   </section>
 
   <section id="services">
     <div class="wrap">
-      <h2>What we do</h2>
-      <div class="work">
-        <div><h3>Concrete sealing</h3><p>A sealer that keeps water and ice melt from soaking into the slab.</p></div>
-        <div><h3>Power washing</h3><p>Dirt, tire marks, algae and years of buildup, gone. You can get this on its own or before a seal.</p></div>
-        <div><h3>Driveways and patios</h3><p>The big slabs take the most abuse, so this is most of what we do.</p></div>
-        <div><h3>Sidewalks and steps</h3><p>The walk from the street to your front door is what everyone sees first.</p></div>
+      <div class="section-head">
+        <h2>What we do</h2>
+        <p class="lead">Every job is quoted on site, so you only pay for what your property needs.</p>
+      </div>
+      <div class="services">
+        <article class="svc"><h3>Concrete Sealing</h3><p>A sealer that keeps water and ice melt from soaking into the slab.</p></article>
+        <article class="svc"><h3>Power Washing</h3><p>Dirt, tire marks, algae and years of buildup, gone. Get it on its own or before a seal.</p></article>
+        <article class="svc"><h3>Driveways &amp; Patios</h3><p>The big slabs take the most abuse, so this is most of what we do.</p></article>
+        <article class="svc"><h3>Walkways &amp; Steps</h3><p>The walk from the street to your front door is the first thing people see.</p></article>
       </div>
     </div>
   </section>
 
-  <section class="alt">
-    <div class="wrap why">
+  <section class="why" id="why">
+    <div class="wrap why-grid">
       <div>
-        <h2>Why bother sealing?</h2>
-        <p>Concrete soaks up water like a sponge. Here, that water freezes and thaws over and over all winter, and every cycle chips away at the surface a little more. Add the salt that comes off your tires and you get the flaking and pitting you see on a lot of older driveways.</p>
-        <p>A good seal slows all of that down. It also makes oil and spills a lot easier to clean up.</p>
+        <h2>Why seal in Utah?</h2>
+        <p class="lead">Concrete soaks up water like a sponge. Here, that water freezes and thaws over and over all winter, and every cycle chips away at the surface a little more. A good seal slows all of that down.</p>
+        <div class="callout">
+          <p>Not sure if yours needs it? Call and ask.</p>
+          <a class="btn btn-blue" href="tel:+13854489466">Call Now</a>
+        </div>
       </div>
-      <aside>
-        <p><strong>Best time to do it:</strong> before the first hard freeze, or in spring once nights stay above freezing.</p>
-        <p>Not sure if yours needs it? Call and ask. We'll tell you straight.</p>
-      </aside>
+      <ul class="threats">
+        <li><strong>Freeze-thaw</strong><span>Water gets in, freezes, expands, and leads to flaking, pitting and cracks.</span></li>
+        <li><strong>Ice melt &amp; road salt</strong><span>Salt dripping off your car wears down unsealed concrete fast.</span></li>
+        <li><strong>Oil &amp; stains</strong><span>Sealed concrete keeps spills on top, so they clean up easier.</span></li>
+        <li><strong>Summer sun</strong><span>High-elevation sun fades and dulls exposed concrete over time.</span></li>
+      </ul>
     </div>
   </section>
 
-  <section>
-    <div class="wrap narrow">
-      <h2>How it works</h2>
-      <ol class="how">
-        <li>You call or send the form and tell us what you want done.</li>
-        <li>We come take a look and give you a quote. Evenings and weekends are fine.</li>
-        <li>On the day, we power wash everything first so the sealer bonds properly.</li>
-        <li>We seal it and tell you when it's safe to walk and drive on.</li>
+  <section class="process" id="process">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How it works</h2>
+        <p class="lead">We work around your schedule, evenings and weekends included.</p>
+      </div>
+      <ol class="steps">
+        <li><h3>Call or request</h3><p>Call 385-448-9466 or send the form and tell us what you want done.</p></li>
+        <li><h3>Free bid</h3><p>We come look at your concrete and give you a quote.</p></li>
+        <li><h3>Deep clean</h3><p>We power wash everything first so the sealer bonds properly.</p></li>
+        <li><h3>Seal it</h3><p>We seal it and tell you when it's safe to walk and drive on.</p></li>
       </ol>
     </div>
   </section>
 
-  <section class="alt areas" id="areas">
-    <div class="wrap narrow">
-      <h2>Where we work</h2>
-      <p><strong>Utah County:</strong> Provo, Orem, Lehi, American Fork, Pleasant Grove, Lindon, Vineyard, Highland, Alpine, Cedar Hills, Saratoga Springs, Eagle Mountain, Springville, Mapleton, Spanish Fork, Salem, Payson and Santaquin.</p>
-      <p><strong>Salt Lake County:</strong> Salt Lake City, Draper, Sandy, South Jordan, West Jordan, Riverton, Herriman, Bluffdale, Murray, Midvale, Cottonwood Heights, Holladay, Millcreek, Taylorsville and West Valley City.</p>
-      <p>Somewhere else nearby? <a href="tel:+13854489466">Call</a> and ask.</p>
+  <section id="areas">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Where we work</h2>
+        <p class="lead">Based in Utah County and serving homeowners up and down the valley.</p>
+      </div>
+      <div class="areas-grid">
+        <div class="county">
+          <h3>Utah County</h3>
+          <ul class="cities">
+            <li>Provo</li><li>Orem</li><li>Lehi</li><li>American Fork</li><li>Pleasant Grove</li><li>Lindon</li><li>Vineyard</li><li>Highland</li><li>Alpine</li><li>Cedar Hills</li><li>Saratoga Springs</li><li>Eagle Mountain</li><li>Springville</li><li>Mapleton</li><li>Spanish Fork</li><li>Salem</li><li>Payson</li><li>Santaquin</li>
+          </ul>
+        </div>
+        <div class="county">
+          <h3>Salt Lake County</h3>
+          <ul class="cities">
+            <li>Salt Lake City</li><li>Draper</li><li>Sandy</li><li>South Jordan</li><li>West Jordan</li><li>Riverton</li><li>Herriman</li><li>Bluffdale</li><li>Murray</li><li>Midvale</li><li>Cottonwood Heights</li><li>Holladay</li><li>Millcreek</li><li>Taylorsville</li><li>West Valley City</li>
+          </ul>
+        </div>
+      </div>
+      <p class="areas-note">Somewhere else nearby? <a href="tel:+13854489466">Call</a> and ask.</p>
     </div>
   </section>
 
-  <section id="quote">
+  <section class="quote" id="quote">
     <div class="wrap quote-grid">
-      <div class="contact">
+      <div>
         <h2>Get a free quote</h2>
-        <p>Calling is fastest. If you'd rather not, fill this out and we'll get back to you.</p>
-        <dl>
-          <dt>Phone</dt><dd><a href="tel:+13854489466">385-448-9466</a></dd>
-          <dt>Email</dt><dd><a href="mailto:info@utahpowerseal.com">info@utahpowerseal.com</a></dd>
-          <dt>Instagram</dt><dd><a href="https://www.instagram.com/utahpowerseal" target="_blank" rel="noopener">@utahpowerseal</a></dd>
-        </dl>
+        <p class="lead">Calling is fastest. If you'd rather not, send the form and we'll get back to you.</p>
+        <ul class="contact-list">
+          <li><small>Phone</small><a href="tel:+13854489466">385-448-9466</a></li>
+          <li><small>Email</small><a href="mailto:info@utahpowerseal.com">info@utahpowerseal.com</a></li>
+          <li><small>Instagram</small><a href="https://www.instagram.com/utahpowerseal" target="_blank" rel="noopener">@utahpowerseal</a></li>
+          <li><small>Bids</small><span class="plain">Evenings &amp; weekends available</span></li>
+        </ul>
       </div>
 
       <form class="qf" name="quote" method="POST" action="https://formsubmit.co/info@utahpowerseal.com">
@@ -244,48 +350,88 @@ form.qf{background:#fff;border:1px solid var(--line);border-radius:8px;padding:2
         </div>
         <div class="row">
           <label>Email<input type="email" name="email" autocomplete="email"></label>
-          <label>City<input type="text" name="city" autocomplete="address-level2" required></label>
+          <label>City
+            <select name="city" required>
+              <option value="">Choose your city</option>
+              <optgroup label="Utah County">
+                <option>Provo</option><option>Orem</option><option>Lehi</option><option>American Fork</option><option>Pleasant Grove</option><option>Lindon</option><option>Vineyard</option><option>Highland</option><option>Alpine</option><option>Cedar Hills</option><option>Saratoga Springs</option><option>Eagle Mountain</option><option>Springville</option><option>Mapleton</option><option>Spanish Fork</option><option>Salem</option><option>Payson</option><option>Santaquin</option>
+              </optgroup>
+              <optgroup label="Salt Lake County">
+                <option>Salt Lake City</option><option>Draper</option><option>Sandy</option><option>South Jordan</option><option>West Jordan</option><option>Riverton</option><option>Herriman</option><option>Bluffdale</option><option>Murray</option><option>Midvale</option><option>Cottonwood Heights</option><option>Holladay</option><option>Millcreek</option><option>Taylorsville</option><option>West Valley City</option>
+              </optgroup>
+              <option>Other</option>
+            </select>
+          </label>
         </div>
         <fieldset>
           <legend>What do you need done?</legend>
           <div class="checks">
-            <label><input type="checkbox" name="services" value="Sealing">Sealing</label>
-            <label><input type="checkbox" name="services" value="Power washing">Power washing</label>
-            <label><input type="checkbox" name="services" value="Driveway">Driveway</label>
-            <label><input type="checkbox" name="services" value="Patio">Patio</label>
-            <label><input type="checkbox" name="services" value="Sidewalk / steps">Sidewalk / steps</label>
+            <label><input type="checkbox" name="services" value="Sealing"><span>Sealing</span></label>
+            <label><input type="checkbox" name="services" value="Power washing"><span>Power washing</span></label>
+            <label><input type="checkbox" name="services" value="Driveway"><span>Driveway</span></label>
+            <label><input type="checkbox" name="services" value="Patio"><span>Patio</span></label>
+            <label><input type="checkbox" name="services" value="Walkways / steps"><span>Walkways / steps</span></label>
           </div>
         </fieldset>
-        <label>Anything else?<textarea name="message" placeholder="Rough size, cracks or stains, when you'd like it done, best time to come by"></textarea></label>
-        <button class="btn btn-blue" type="submit">Send request</button>
+        <label>Best time for your bid
+          <select name="best_time">
+            <option>Weekday daytime</option>
+            <option>Weekday evening</option>
+            <option>Weekend</option>
+            <option>Flexible</option>
+          </select>
+        </label>
+        <label>Anything else?<textarea name="message" placeholder="Rough size, cracks or stains, when you'd like it done"></textarea></label>
+        <button class="btn btn-blue" type="submit">Request My Free Quote</button>
         <p class="form-msg" role="status" aria-live="polite"></p>
       </form>
     </div>
   </section>
 
-  <section class="faq">
-    <div class="wrap narrow">
+  <section id="faq">
+    <div class="wrap">
       <h2>Common questions</h2>
-      <h3>How much does it cost?</h3>
-      <p>It depends on the size and shape your concrete is in, so we quote every job after seeing it. The quote is free.</p>
-      <h3>How long until I can drive on it?</h3>
-      <p>It depends on the weather that day. We'll give you a time before we leave.</p>
-      <h3>Can I just get it power washed?</h3>
-      <p>Yes. Sealing always starts with a wash, but you can get a wash without the seal.</p>
+      <div class="faq-list">
+        <details><summary>How much does it cost?</summary><p>It depends on the size and condition of your concrete, so we quote every job after seeing it. The quote is free.</p></details>
+        <details><summary>Can you come after work or on a Saturday?</summary><p>Yes. We do evening and weekend bids so you can be home when we look at it.</p></details>
+        <details><summary>When can I drive on it again?</summary><p>It depends on the weather that day. We'll give you a time before we leave.</p></details>
+        <details><summary>Can I just get it power washed?</summary><p>Yes. Sealing always starts with a wash, but you can get a wash without the seal.</p></details>
+        <details><summary>When's the best time to seal?</summary><p>Before the first hard freeze, or in spring once nights stay above freezing.</p></details>
+      </div>
     </div>
   </section>
 </main>
 
 <footer class="site-foot">
   <div class="wrap">
-    <span>© <span id="yr">2026</span> Utah Power Seal · Utah County &amp; Salt Lake County</span>
-    <span><a href="mailto:info@utahpowerseal.com">info@utahpowerseal.com</a> · <a href="https://www.instagram.com/utahpowerseal" target="_blank" rel="noopener">@utahpowerseal</a></span>
+    <div>
+      <span class="foot-logo"><img src="logo-sm.webp" alt="Utah Power Seal" width="110" height="50" loading="lazy"></span>
+      <p>Concrete sealing and power washing for homeowners in Utah County and Salt Lake County.</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+13854489466">385-448-9466</a></li>
+        <li><a href="mailto:info@utahpowerseal.com">info@utahpowerseal.com</a></li>
+        <li><a href="https://www.instagram.com/utahpowerseal" target="_blank" rel="noopener">@utahpowerseal</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">How It Works</a></li>
+        <li><a href="#areas">Service Areas</a></li>
+        <li><a href="#quote">Free Quote</a></li>
+      </ul>
+    </div>
+    <div class="copy">© <span id="yr">2026</span> Utah Power Seal</div>
   </div>
 </footer>
 
 <div class="callbar" role="region" aria-label="Call Utah Power Seal">
   <div class="wrap">
-    <p>Free quotes, evenings and weekends too.</p>
+    <div class="callbar-text"><b>Free quotes · Evening &amp; weekend bids</b><span>Utah County &amp; Salt Lake County</span></div>
     <a class="btn btn-blue" href="tel:+13854489466"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>Call 385-448-9466</a>
   </div>
 </div>
@@ -293,6 +439,15 @@ form.qf{background:#fff;border:1px solid var(--line);border-radius:8px;padding:2
 <script>
 (function(){
   document.getElementById('yr').textContent = new Date().getFullYear();
+
+  var btn = document.querySelector('.menu-btn'), nav = document.getElementById('nav');
+  btn.addEventListener('click', function(){
+    var open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ nav.classList.remove('open'); btn.setAttribute('aria-expanded', false); });
+  });
 
   // Quote form via FormSubmit (emails info@utahpowerseal.com)
   var form = document.querySelector('form.qf'), msg = form.querySelector('.form-msg');
@@ -317,7 +472,7 @@ form.qf{background:#fff;border:1px solid var(--line);border-radius:8px;padding:2
       msg.textContent = "That didn't go through. Please call 385-448-9466 or email info@utahpowerseal.com.";
       msg.className = 'form-msg err';
     }).finally(function(){
-      submit.disabled = false; submit.textContent = 'Send request';
+      submit.disabled = false; submit.textContent = 'Request My Free Quote';
     });
   });
 })();
