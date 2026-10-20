@@ -68,7 +68,7 @@ p{margin:0 0 1em}
 /* Header */
 header.top{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;gap:16px}
-.brand img{height:54px;width:auto}
+.brand img{height:60px;width:auto}
 nav.main ul{display:flex;gap:2px;list-style:none;margin:0;padding:0}
 nav.main a{font-family:var(--head);font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.07em;color:var(--black);text-decoration:none;padding:10px 12px;border-bottom:2px solid transparent}
 nav.main a:hover{border-bottom-color:var(--blue)}
@@ -84,12 +84,12 @@ nav.main a:hover{border-bottom-color:var(--blue)}
   nav.main.open{display:block}
   nav.main ul{flex-direction:column;padding:8px 16px 16px}
   nav.main a{display:block;padding:13px 4px;font-size:.92rem}
-  .brand img{height:46px}
+  .brand img{height:50px}
 }
 
 /* Hero */
 .hero{position:relative;background:var(--black);color:#fff;overflow:hidden}
-.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:center;padding-top:80px;padding-bottom:140px}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:center;padding-top:84px;padding-bottom:128px}
 .hero h1{color:#fff;font-size:clamp(2.3rem,5.8vw,4rem);font-weight:900;text-transform:uppercase}
 .hero h1 em{font-style:italic;color:var(--blue)}
 .hero p{color:#C3CCD4;font-size:1.13rem;max-width:52ch}
@@ -100,10 +100,15 @@ nav.main a:hover{border-bottom-color:var(--blue)}
 .facts b{display:block;font-family:var(--head);font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:.95rem}
 .facts span{color:#9FABB6;font-size:.93rem}
 .mountains{position:absolute;left:0;right:0;bottom:-1px;z-index:1;width:100%;height:auto}
-@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:36px;padding-top:56px;padding-bottom:110px}}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:36px;padding-top:56px;padding-bottom:104px}
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:4px 22px}
+  .facts div{border-bottom:0}}
+@media (max-width:600px){.facts{grid-template-columns:1fr;gap:0}.facts div{border-bottom:1px solid rgba(255,255,255,.1)}.facts div:last-child{border-bottom:0}
+  .hero-ctas .btn{width:100%}}
 
 /* Sections */
 section{padding:84px 0}
+@media (max-width:600px){section{padding:60px 0}h2{margin-bottom:.4em}}
 .section-head{margin-bottom:36px}
 .section-head .lead{margin:0}
 
@@ -121,8 +126,10 @@ section{padding:84px 0}
 .threats li{padding:18px 0;border-bottom:1px solid var(--line)}
 .threats strong{font-family:var(--head);text-transform:uppercase;letter-spacing:.04em;font-size:.95rem;color:var(--black);display:block;margin-bottom:2px}
 .threats span{color:#55616D;font-size:.96rem}
-.callout{margin-top:26px;background:var(--black);color:#fff;border-radius:var(--radius);padding:22px 24px;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-.callout p{margin:0;font-family:var(--head);font-weight:700}
+.callout{margin-top:28px;background:var(--black);color:#fff;border-radius:var(--radius);padding:20px 22px;display:flex;gap:18px;align-items:center;justify-content:space-between}
+.callout p{margin:0;font-family:var(--head);font-weight:700;flex:1;min-width:0}
+.callout .btn{padding:13px 20px}
+@media (max-width:480px){.callout{flex-direction:column;align-items:stretch;text-align:center}}
 @media (max-width:900px){.why-grid{grid-template-columns:1fr;gap:32px}}
 
 /* Process */
@@ -130,7 +137,7 @@ section{padding:84px 0}
 .process h2{color:#fff}
 .process .lead{color:#A9B4BE}
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s;list-style:none;padding:0;margin:0}
-.steps li{border-top:2px solid rgba(255,255,255,.15);padding:22px 4px 0}
+.steps li{border-top:2px solid rgba(255,255,255,.15);padding:22px 0 0}
 .steps li::before{counter-increment:s;content:"0" counter(s);font-family:var(--head);font-weight:900;font-size:2.4rem;color:var(--blue);line-height:1;display:block;margin-bottom:12px}
 .steps h3{color:#fff}
 .steps p{margin:0;color:#B4BEC7;font-size:.96rem}
@@ -174,6 +181,7 @@ form.qf{background:var(--paper);border:1px solid var(--line);border-radius:12px;
 .form-msg.ok{display:block;background:#E6F5EC;color:#1B5E36}
 .form-msg.err{display:block;background:#FBEAEA;color:#8E1F1F}
 @media (max-width:900px){.quote-grid{grid-template-columns:1fr;gap:32px}}
+@media (min-width:521px) and (max-width:900px){.contact-list{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}}
 @media (max-width:520px){.qf .row{grid-template-columns:1fr}form.qf{padding:22px}}
 
 /* FAQ */
@@ -274,8 +282,8 @@ details p{margin:0 0 18px;color:#4C5865}
         <h2>Why seal in Utah?</h2>
         <p class="lead">Concrete soaks up water like a sponge. Here, that water freezes and thaws over and over all winter, and every cycle chips away at the surface a little more. A good seal slows all of that down.</p>
         <div class="callout">
-          <p>Not sure if yours needs it? Call and ask.</p>
-          <a class="btn btn-blue" href="tel:+13854489466">Call Now</a>
+          <p>Not sure if yours needs it?</p>
+          <a class="btn btn-blue" href="tel:+13854489466">Call and Ask</a>
         </div>
       </div>
       <ul class="threats">
