@@ -376,9 +376,9 @@ form.qf{background:#fff;border-radius:20px;padding:32px}
         <p class="lead">A real job from start to finish, cut down to under 20 seconds.</p>
       </div>
       <div class="reel-video">
-        <video data-poster="video/process-poster.webp" muted loop playsinline preload="none" aria-label="Video of Utah Power Seal cleaning and sealing a driveway">
-          <source data-src="video/process.mp4" type="video/mp4">
-          <source data-src="video/process.webm" type="video/webm">
+        <video poster="video/process-poster.webp" autoplay muted loop playsinline preload="metadata" aria-label="Video of Utah Power Seal cleaning and sealing a driveway">
+          <source src="video/process.mp4" type="video/mp4">
+          <source src="video/process.webm" type="video/webm">
         </video>
       </div>
       <div class="reel-list">
@@ -614,24 +614,14 @@ form.qf{background:#fff;border-radius:20px;padding:32px}
     a.addEventListener('click', function(){ nav.classList.remove('open'); btn.setAttribute('aria-expanded', false); });
   });
 
-  // Load and play the job video only when it scrolls into view
+  // Make sure the job video autoplays (muted) on every browser
   var vid = document.querySelector('.reel-video video');
   if (vid) {
-    var startVid = function(){
-      if (vid.dataset.poster) { vid.poster = vid.dataset.poster; }
-      vid.querySelectorAll('source[data-src]').forEach(function(s){ s.src = s.dataset.src; s.removeAttribute('data-src'); });
-      vid.load();
-      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) { var pr = vid.play(); if (pr) pr.catch(function(){}); }
-    };
+    vid.muted = true; vid.defaultMuted = true; vid.setAttribute('muted','');
+    var tryPlay = function(){ var pr = vid.play(); if (pr && pr.catch) pr.catch(function(){ vid.setAttribute('controls',''); }); };
     if ('IntersectionObserver' in window) {
-      var vo = new IntersectionObserver(function(es){
-        es.forEach(function(e){
-          if (!e.isIntersecting) { if (!vid.paused) vid.pause(); return; }
-          if (vid.querySelector('source[data-src]')) startVid(); else { var pr = vid.play(); if (pr) pr.catch(function(){}); }
-        });
-      }, {rootMargin:'400px 0px'});
-      vo.observe(vid);
-    } else { startVid(); }
+      new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) tryPlay(); }); }, {threshold:.2}).observe(vid);
+    } else { tryPlay(); }
   }
 
   // Quote form via FormSubmit (emails info@utahpowerseal.com)
