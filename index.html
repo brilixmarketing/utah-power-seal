@@ -24,6 +24,7 @@
   "telephone": "+1-385-448-9466",
   "email": "info@utahpowerseal.com",
   "image": "og-image.jpg",
+  "founder": {"@type": "Person", "name": "Kael Shepherd", "jobTitle": "Owner & Operator"},
   "areaServed": [
     {"@type": "AdministrativeArea", "name": "Utah County, Utah"},
     {"@type": "AdministrativeArea", "name": "Salt Lake County, Utah"}
@@ -92,8 +93,9 @@ nav.main a:hover{background:var(--paper)}
 }
 
 /* Hero */
-.hero{position:relative;min-height:calc(100vh - 78px);min-height:calc(100svh - 78px);display:flex;align-items:flex-end;color:#fff;background:#1A232C url("hero.webp") center/cover no-repeat}
-.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,24,32,.55) 0%,rgba(16,24,32,.6) 40%,rgba(16,24,32,.92) 100%)}
+.hero{position:relative;min-height:calc(100vh - 78px);min-height:calc(100svh - 78px);display:flex;align-items:flex-end;color:#fff;background:#1A232C url("img/hero-wide.webp") center 60%/cover no-repeat}
+@media (max-width:700px){.hero{background-image:url("img/hero-tall.webp");background-position:center 70%}}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,24,32,.35) 0%,rgba(16,24,32,.55) 45%,rgba(16,24,32,.94) 100%)}
 .hero .wrap{position:relative;width:100%;padding-top:80px;padding-bottom:72px}
 .badge{display:inline-flex;align-items:center;gap:10px;font-family:var(--head);font-weight:600;font-size:.9rem;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:8px 16px;border-radius:999px;margin-bottom:26px;backdrop-filter:blur(6px)}
 .badge i{width:8px;height:8px;border-radius:50%;background:var(--blue);display:block}
@@ -105,14 +107,19 @@ nav.main a:hover{background:var(--paper)}
 
 /* Intro */
 .intro{padding:110px 0}
-.intro .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:end}
-.intro h2{margin:0}
+.intro .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.compare{position:relative;margin:0;border-radius:24px;overflow:hidden}
+.compare img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover}
+.compare .tag{position:absolute;bottom:16px;font-family:var(--head);font-weight:700;font-size:.85rem;padding:7px 14px;border-radius:999px}
+.compare .t1{left:16px;background:var(--blue);color:var(--black)}
+.compare .t2{right:16px;background:rgba(255,255,255,.92);color:var(--black)}
+.intro h2{margin-bottom:.5em}
 .intro p{font-size:1.15rem;color:#4D5964}
 @media (max-width:900px){.intro{padding:76px 0}.intro .wrap{grid-template-columns:1fr;gap:24px}}
 
 /* Image band */
-.band{position:relative;min-height:440px;display:flex;align-items:center;background:#55606A url("band.webp") center/cover no-repeat;color:#fff;text-align:center}
-.band::before{content:"";position:absolute;inset:0;background:rgba(16,24,32,.62)}
+.band{position:relative;min-height:440px;display:flex;align-items:center;background:#55606A url("img/band.webp") center 70%/cover no-repeat;color:#fff;text-align:center}
+.band::before{content:"";position:absolute;inset:0;background:rgba(16,24,32,.6)}
 .band .wrap{position:relative}
 .band h2{color:#fff;max-width:16ch;margin:0 auto .35em}
 .band p{color:#DCE3E8;font-size:1.15rem;margin:0 auto;max-width:44ch}
@@ -136,17 +143,28 @@ nav.main a:hover{background:var(--paper)}
 .services-head{max-width:760px;margin-bottom:56px}
 .svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
 .svc{position:relative;border-radius:22px;padding:34px 32px 36px;background:var(--black);color:#C7D0D8;min-height:250px;display:flex;flex-direction:column;justify-content:space-between;gap:40px;overflow:hidden}
-.svc::after{content:"";position:absolute;inset:0;background:url("hero.webp") center/cover;opacity:.16;mix-blend-mode:luminosity}
-.svc > *{position:relative;z-index:1}
+.svc::after{content:"";position:absolute;inset:0;background:var(--photo) center/cover;opacity:.5}
+.svc::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(16,24,32,.35),rgba(16,24,32,.9))}
+.svc > *{z-index:2}
+.svc > *{position:relative}
 .svc .num{display:block;font-family:var(--head);font-weight:800;color:var(--blue);font-size:1rem;letter-spacing:.06em}
 .svc h3{color:#fff;font-size:1.7rem;letter-spacing:-.02em;margin-bottom:.35em}
 .svc div{margin-top:auto}
 .svc p{margin:0;max-width:38ch}
 .svc.light{background:var(--paper);color:#4D5964}
-.svc.light::after{display:none}
+.svc.light::after,.svc.light::before{display:none}
 .svc.light h3{color:var(--black)}
 .svc.light .num{color:var(--blue-dark)}
 @media (max-width:760px){.services{padding:76px 0}.svc-grid{grid-template-columns:1fr}.svc{min-height:210px}}
+
+/* Owner */
+.owner{padding:0 0 110px}
+.owner .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:center}
+.owner img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:24px}
+.owner p{font-size:1.15rem;color:#4D5964;max-width:52ch}
+.owner .sig{font-family:var(--head);font-weight:700;color:var(--black);margin:4px 0 26px}
+.owner .sig span{display:block;font-family:var(--body);font-weight:400;color:var(--gray);font-size:.95rem}
+@media (max-width:860px){.owner{padding-bottom:76px}.owner .wrap{grid-template-columns:1fr;gap:28px}.owner img{max-width:420px}}
 
 /* Why */
 .why{padding:0 0 110px}
@@ -248,6 +266,7 @@ form.qf{background:#fff;border-radius:20px;padding:32px}
       <ul>
         <li><a href="#process">Process</a></li>
         <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#areas">Areas</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -278,11 +297,14 @@ form.qf{background:#fff;border-radius:20px;padding:32px}
       <div>
         <span class="kicker">Utah Power Seal</span>
         <h2>clean it. seal it. stop worrying about it.</h2>
-      </div>
-      <div>
         <p>Your driveway takes a beating every winter. We power wash off the buildup, then seal the surface so water, ice melt and oil sit on top instead of soaking in.</p>
+        <p>The photo shows the difference. Same stamped concrete, same porch. One side is sealed, one isn't yet.</p>
         <a class="arrow" href="#services">See what we do →</a>
       </div>
+      <figure class="compare">
+        <img src="img/sealed.webp" alt="Stamped concrete porch with the left side freshly sealed and dark, and the right side unsealed and gray" width="1000" height="1127" loading="lazy">
+        <span class="tag t1">Sealed</span><span class="tag t2">Not yet</span>
+      </figure>
     </div>
   </section>
 
@@ -319,10 +341,23 @@ form.qf{background:#fff;border-radius:20px;padding:32px}
         <p class="lead">Every job is quoted on site, so you only pay for what your property needs.</p>
       </div>
       <div class="svc-grid">
-        <article class="svc"><span class="num">01</span><div><h3>Concrete sealing</h3><p>A sealer that keeps water and ice melt from soaking into the slab.</p></div></article>
+        <article class="svc" style="--photo:url(img/sealed-card.webp)"><span class="num">01</span><div><h3>Concrete sealing</h3><p>A sealer that keeps water and ice melt from soaking into the slab.</p></div></article>
         <article class="svc light"><span class="num">02</span><div><h3>Power washing</h3><p>Dirt, tire marks, algae and years of buildup, gone. Get it on its own or before a seal.</p></div></article>
         <article class="svc light"><span class="num">03</span><div><h3>Driveways &amp; patios</h3><p>The big slabs take the most abuse, so this is most of what we do.</p></div></article>
-        <article class="svc"><span class="num">04</span><div><h3>Walkways &amp; steps</h3><p>The walk from the street to your front door is the first thing people see.</p></div></article>
+        <article class="svc" style="--photo:url(img/hero-wide.webp)"><span class="num">04</span><div><h3>Walkways &amp; steps</h3><p>The walk from the street to your front door is the first thing people see.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="owner" id="about">
+    <div class="wrap">
+      <img src="img/kael.webp" alt="Kael Shepherd, owner and operator of Utah Power Seal" width="800" height="1000" loading="lazy">
+      <div>
+        <span class="kicker">Meet the owner</span>
+        <h2>hi, i'm kael.</h2>
+        <p>I own and run Utah Power Seal. When you call, you're talking to me, and I'm the one who comes out to look at your concrete and do the work.</p>
+        <p class="sig">Kael Shepherd<span>Owner &amp; operator</span></p>
+        <a class="btn btn-dark" href="tel:+13854489466">Call Kael · 385-448-9466</a>
       </div>
     </div>
   </section>
@@ -469,6 +504,7 @@ form.qf{background:#fff;border-radius:20px;padding:32px}
           <ul>
             <li><a href="#process">Process</a></li>
             <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
             <li><a href="#areas">Service areas</a></li>
             <li><a href="#contact">Free quote</a></li>
           </ul>
